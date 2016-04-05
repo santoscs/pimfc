@@ -1,0 +1,6 @@
+^data-raw$
+^data-raw/focus_ipca_bcb\.R$
+^data-raw/transforma_series\.R$
+^data-raw/importa_series\.R$
+^data-raw/outsample\.R$
+^prevendo\.inflacao\.fatores\.comuns\.Rproj$

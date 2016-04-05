@@ -1,0 +1,16 @@
+Package: prevendo.inflacao.fatores.comuns
+Title: Prevendo Inflacao Com Modelo Fatores Comuns
+Version: 0.0.0.9000
+Authors@R: person("Cristiano", "Santos", email = "cristiano1br@gmail.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends:
+    R (>= 3.2.4)
+License: GPL-3
+LazyData: true
+RoxygenNote: 5.0.1
+Imports: forecast,
+    vars,
+    dyn,
+    lmtest,
+    sandwich,
+    zoo

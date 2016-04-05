@@ -1,0 +1,130 @@
+,cod,serie,unidade,setor,fonte,trans
+,XNA,1 – Produção,,"0,1",,NA
+,X521274780,PIB,R$,1,Ipeadata,4
+,X31873,"Expedição de caixas, acessórios e chapas - papelão ondulado 3 *",Unid,1,Ipeadata,3
+,X32194,Produção - petróleo - média 3 *,Barris/dia ,1,Ipeadata,3
+,X31845,Produção física - alimentos - índice (média 1989 = 100),Índice ,1,Ipeadata,3
+,X35921,Abate - bovinos - peso das carcaças  3 *,Kg (mil),1,Ipeadata,3
+,X35923,Abate - suínos - peso das carcaças 3 *,Kg (mil),1,Ipeadata,3
+,X36495,Produção - aço bruto 3 *,Kg (mil),1,Ipeadata,3
+,X37660,Produção – cimento 3 *,Kg (mil),1,Ipeadata,3
+,X600803224,Produção - caminhões – montados 3 *,unid,1,Ipeadata,3
+,X600803227,Produção - ônibus – montados 3 *,unid,1,Ipeadata,3
+,X600803230,Produção - automóveis - montados 3 *,unid,1,Ipeadata,3
+,X1506214474,Produção industrial - bens de capital - quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X1506214519,Produção industrial - bens intermediários - quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X1506214564,Produção industrial - bens de consumo - quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X1506214609,Produção industrial - bens de consumo duráveis - quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X1506214652,Produção industrial - bens de consumo não duráveis – quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X1506214698,Produção industrial - indústria geral - quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X1506214787,Produção industrial - indústria de transformação - quantum (média 2002 = 100) 3 *,Índice ,1,Ipeadata,3
+,X33210,Utilização da capacidade instalada – indústria 1 *,(%),1,Ipeadata,0
+,XNA,2 - Preços e indicadores monetários ,,"1,2",,NA
+,X32130,M0 – média 4 *,R$,2,Ipeadata,4
+,X32133,M1 – média 4 *,R$,2,Ipeadata,4
+,X33670,IPA origem - prod. agropecuários (ago. 1994 = 100) 3 *,Índice ,2,Ipeadata,3
+,X33672,IPA origem - prod. industriais (ago. 1994 = 100) 3 *,Índice ,2,Ipeadata,3
+,X36473,Inflação - INPC 1 *,% a.m.,2,Ipeadata,0
+,X38366,Cesta básica - município de São Paulo 4 *,R$,2,Ipeadata,4
+,X38513,Inflação – IPCA 1 *,% a.m.,2,Ipeadata,0
+,X39615,Inflação - IGP-DI 1 *,% a.m.,2,Ipeadata,0
+,X39617,Inflação - IGP-OG 1 *,% a.m.,2,Ipeadata,0
+,X39618,Inflação - INCC 1 *,% a.m.,2,Ipeadata,0
+,X39619,Inflação - IPA-EP 1 * ,% a.m.,2,Ipeadata,0
+,X33239,Inflação - ICV-SP 1 *,% a.m.,2,Ipeadata,2
+,X39938,Fatores condicionantes da base monetária - papel-moeda emitido 6 *,R$,2,Ipeadata,1
+,X39939,Fatores condicionantes da base monetária - reservas bancárias 6 *,R$,2,Ipeadata,1
+,X39621,Inflação - IPC (FGV),(% a.m.),2,Ipeadata,0
+,X34116,Inflação - IPC (FIPE),(% a.m.),2,Ipeadata,0
+,XNA,3- Mercado Externo,,"2,3",,NA
+,X37821,Exportações - rentabilidade (dez. 2003 = 100) 3 *,Índice ,3,Ipeadata,3
+,X32289,Reservas internacionais - liquidez internacional,US$,3,Ipeadata,2
+,X39421,Serviços e rendas - serviços (Antiga metod.),US$ ,3,Ipeadata,2
+,X39424,Serviços e rendas - rendas (Antiga metod.),US$ ,3,Ipeadata,2
+,X39720,Estados Unidos - índice de ações - Dow Jones - fechamento 3 *,Índice ,3,Ipeadata,3
+,X39721,Estados Unidos - índice de ações - NASDAQ – fechamento 3 * ,Índice ,3,Ipeadata,3
+,X35579,Importações - bens de consumo duráveis - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35580,Importações - bens de consumo não duráveis - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35581,Importações - bens intermediários - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35582,Importações - bens de capital - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35590,Importações - quantum (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X36915,Importações - (FOB) - US$ 3 *,Índice ,3,Ipeadata,3
+,X35674,Exportações - bens de consumo duráveis - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35675,Exportações - bens de consumo não duráveis - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35676,Exportações - bens intermediários - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35677,Exportações - bens de capital - preços (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X35690,Exportações - quantum (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X36916,Exportações - (FOB) - US$ 3 *,Índice ,3,Ipeadata,3
+,X1693727000,Termos de troca (média 2006 = 100) 3 *,Índice ,3,Ipeadata,3
+,X32284,Câmbio contratado - comercial,US$,3,Ipeadata,0
+,X32287,Câmbio contratado - financeiro,US$,3,Ipeadata,0
+,X548454529,Taxa de paridade do poder de compra (PPC) - consumo das famílias,-,3,Ipeadata,2
+,X35918,Taxa de câmbio - R$ / US$ - paralelo - venda - fim período,R$,3,Ipeadata,3
+,X39875,Relação câmbio efetivo / salário - índice (média 2005 = 100),Índice ,3,Ipeadata,3
+,X39418,Conta capital e financeira - conta capital (Antiga metod.),US$,3,Ipeadata,0
+,X39419,Conta capital e financeira - conta financeira (Antiga metod.),US$,3,Ipeadata,0
+,X39531,Transferências unilaterais correntes - saldo (Antiga metod.),US$,3,Ipeadata,0
+,XNA,4- Finanças Públicas,,"3,4",,NA
+,X32226,Execução financeira - receitas - total,R$,4,Ipeadata,4
+,X32110,Imposto sobre a circulação de mercadorias (ICMS) 4 *,R$,4,Ipeadata,4
+,X32060,Execução financeira - despesas - total,R$,4,Ipeadata,4
+,X32090,Dívida - total - gov. federal e Banco Central – líquida 4 *,R$,4,Ipeadata,4
+,X36719,Imposto inflacionário - real - método 2B 2 *,R$,4,Ipeadata,1
+,X36716,Imposto inflacionário - real - método 2A 2 *,R$,4,Ipeadata,1
+,X36715,Imposto inflacionário - real - método 1B 2 *,R$,4,Ipeadata,1
+,X36714,Imposto inflacionário - real - método 1A 2 *,R$,4,Ipeadata,1
+,X32088,Dívida - total - estados e municípios - líquida,R$,4,Ipeadata,4
+,X32072,Dívida fiscal - setor público - líquida,R$,4,Ipeadata,4
+,X1505384299,NFSP - gov. federal e Banco Central - primário  - s/ desvalorização cambial,R$,4,Ipeadata,5
+,X1505384254,NFSP - estados e municípios - primário - s/ desvalorização cambial,R$,4,Ipeadata,5
+,X39057,Fluxo de caixa da previdência - despesas - total,R$,4,Ipeadata,4
+,X1414756693,Fluxo de caixa da previdência - recebimentos - total,R$,4,Ipeadata,4
+,,5 – Consumo e vendas,,"4,5",,
+,X1378,Vendas de autoveículos 3 ** ,unidades ,5,Banco Central,3
+,X33696,Vendas nominais - indústria (média 2006 = 100) – SP 3 *,Índice ,5,Ipeadata,3
+,X38357,Consumo - energia elétrica – comércio 3 *,GWh ,5,Ipeadata,3
+,X38358,Consumo - energia elétrica – indústria 3 * ,GWh ,5,Ipeadata,3
+,X2027247947,Consumo - energia elétrica - outros setores 3 *,GWh ,5,Ipeadata,3
+,X33217,Faturamento real - indústria - índice (média 2006 = 100),Índice ,5,Ipeadata,3
+,X37852,Inadimplência - índice em t-3,Índice ,5,Ipeadata,2
+,X37853,Inadimplência - índice em t-4,Índice ,5,Ipeadata,2
+,X40075,SPC - número de registros líquidos,Unidade,5,Ipeadata,2
+,X32035,Consumo aparente - derivados de petróleo - média - qde./dia,Barril,5,Ipeadata,3
+,X39638,Consumo aparente - bens de capital - índice encadeado (média 2002 = 100),Índice ,5,Ipeadata,3
+,X848760088,Consumo aparente - bens de consumo - índice encadeado (média 2002 = 100),Índice ,5,Ipeadata,3
+,X848760089,Consumo aparente - bens de consumo duráveis - índice encadeado (média 2002 = 100),Índice ,5,Ipeadata,3
+,X848760090,Consumo aparente - bens de consumo semi e não duráveis - índice encadeado (média 2002 = 100),Índice ,5,Ipeadata,3
+,X848760086,Consumo aparente - bens intermediários - índice encadeado (média 2002 = 100),Índice ,5,Ipeadata,3
+,,6 – Mercado de trabalho,,"5,6",,
+,X33684,Horas trabalhadas - na produção - indústria (média 2006 = 100) - SP 3 *,Índice ,6,Ipeadata,3
+,X33692,Horas pagas - indústria (média 2006 = 100) - SP 3 *,Índice ,6,Ipeadata,3
+,X33212,Pessoal empregado - indústria - índice (média 2006 = 100),Índice ,6,Ipeadata,3
+,X37655,Taxa de desemprego - RMSP 3 *,% ,6,Ipeadata,3
+,X37656,Taxa de desemprego - aberto - RMSP 3 *,% ,6,Ipeadata,3
+,X1684652394,Nível de emprego - indústria (jun. 2005 = 100) - SP 3 *,Índice ,6,Ipeadata,3
+,X33694,Salário nominal - indústria - índice (média 2006 = 100) – SP 3 *,Índice ,6,Ipeadata,3
+,X39625,Folha de pagamento - indústria geral - índice (jan. 2001 = 100) 3 *,Índice ,6,Ipeadata,3
+,X1586,Emprego formal - Índice geral 3 **,Índice ,6,Banco Central,3
+,X37657,Taxa de desemprego - oculto - RMSP,% ,6,Ipeadata,3
+,X33208,Horas trabalhadas - indústria - índice (média 2006 = 100),Índice ,6,Ipeadata,3
+,X33690,Salário real - médio - indústria - índice (média 2006 = 100) - SP,Índice ,6,Ipeadata,3
+,X37654,Rendimento médio - real - assalariados - trabalho principal - índice (média 2000 = 100) - RMSP,Índice ,6,Ipeadata,3
+,,7 – Mercado Financeiro,,"6,7",,
+,X31875,Índice de ações - Ibovespa – fechamento 1 *,% a.m.,7,Ipeadata,0
+,X32241,Taxa de juros - Over / Selic,(% a.m.),7,Ipeadata,3
+,X32101,Taxa de câmbio - R$ / US$ - comercial - venda – média 3 **,R$,7,Ipeadata,3
+,X32220,Dólar comercial - rendimento nominal,Índice ,7,Ipeadata,2
+,X32210,Fundo de ações - rendimento nominal,Índice ,7,Ipeadata,2
+,X40080,Índice de confiança do consumidor (ICC),Índice ,7,Ipeadata,3
+,X40082,Índice de expectativas (IEC),Índice ,7,Ipeadata,3
+,X1067371625,Operações de crédito ao setor público,R$,7,Ipeadata,4
+,X1067371640,Operações de crédito ao setor privado,R$,7,Ipeadata,4
+,X1067371633,Operações de crédito ao setor privado - comércio,R$,7,Ipeadata,4
+,X1067371629,Operações de crédito ao setor privado - imobiliário,R$,7,Ipeadata,4
+,X1067371627,Operações de crédito ao setor privado - indústria,R$,7,Ipeadata,4
+,X1067371638,Operações de crédito ao setor privado - outros serviços,R$,7,Ipeadata,4
+,X1067371636,Operações de crédito ao setor privado - pessoas físicas,R$,7,Ipeadata,4
+,X1067371632,Operações de crédito ao setor privado - rural,R$,7,Ipeadata,4
+,X32237,Taxa de juros - CDI / Over,(% a.m.),7,Ipeadata,3
+,X32244,Taxa de juros - TBF,(% a.m.),7,Ipeadata,3
+,X32245,Taxa de juros - TR,(% a.m.),7,Ipeadata,2
