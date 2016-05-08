@@ -19,7 +19,7 @@ Caso não tenha ainda instalado:
 ### Instala os dados e funções necessárias
 
 ```r
-#devtools::install_github("santoscs/prevendo.inflacao.fatores.comuns")
+devtools::install_github("santoscs/prevendo.inflacao.fatores.comuns")
 ```
 
 ### Importa os dados
@@ -93,7 +93,6 @@ ipca12.focus <- window(ipca12.focus, start=start(ipca12), end=end(ipca12))
 plot(ipca12.fig)
 ```
 
-![](read_files/figure-html/fig-1.png)
 
 
 ### Tabela 1 - Habilidade preditiva fora da amostra, 2008.5-2014.2
@@ -108,38 +107,38 @@ tab <- tab.reqm(x, obs = "ipca12", ref = "ipca12.focus")
 knitr::kable(tab)
 ```
 
-               reqm   eqmr   dm test 
--------------  -----  -----  --------
-ipca12.focus   5,29   1,00           
-ipca12.arima   0,89   0,03   0       
-ipca12.var     1,48   0,08   0       
-ipca12.DI      0,96   0,03   0       
-ipca12.DItf    1,06   0,04   0       
-ipca12.DItp    0,95   0,03   0       
-ipca12.DItfp   1,08   0,04   0       
+
+              | reqm  | eqmr  | dm test 
+------------- | ----- | ----- | --------
+ipca12.focus  | 5,29  | 1,00  |         
+ipca12.arima  | 0,89  | 0,03  | 0       
+ipca12.var    | 1,48  | 0,08  | 0       
+ipca12.DI     | 0,96  | 0,03  | 0       
+ipca12.DItf   | 1,06  | 0,04  | 0       
+ipca12.DItp   | 0,95  | 0,03  | 0       
+ipca12.DItfp  | 1,08  | 0,04  | 0       
 
 ### Tabela 2 - Teste de previsão incorporada, 2008.5-2014.2
 
 
-Modelo A       Modelo B       Lambda (valor p) 
--------------  -------------  -----------------
-ipca12.focus   ipca12.arima   0,34 (0,39)      
-ipca12.focus   ipca12.var     -0,23 (0,42)     
-ipca12.focus   ipca12.DI      0,23 (0,24)      
-ipca12.focus   ipca12.DItf    -0,92 (0,00)     
-ipca12.focus   ipca12.DItp    0,31 (0,21)      
-ipca12.focus   ipca12.DItfp   0,06 (0,89)      
+Modelo A      | Modelo B      | Lambda (valor p) 
+------------- | ------------- | -----------------
+ipca12.focus  | ipca12.arima  | 0,34 (0,39)      
+ipca12.focus  | ipca12.var    | -0,23 (0,42)     
+ipca12.focus  | ipca12.DI     | 0,23 (0,24)      
+ipca12.focus  | ipca12.DItf   | -0,92 (0,00)     
+ipca12.focus  | ipca12.DItp   | 0,31 (0,21)      
+ipca12.focus  | ipca12.DItfp  | 0,06 (0,89)      
 
 ### Tabela 3 - Habilidade preditiva fora da amostra das previsões combinadas, 2008.5-2014.2
 
 
 ```r
-ipca12.comb <- 0.76*ipca12.focus +  0.24*ipca12.DItp
-ipca12.comb2 <- 0.5*ipca12.focus +  0.5*ipca12.DItp
 ipca12.carima <- 0.5*ipca12.focus +  0.5*ipca12.arima
 ipca12.cvar <- 0.5*ipca12.focus +  0.5*ipca12.var
 ipca12.cdi <- 0.5*ipca12.focus +  0.5*ipca12.DI
 ipca12.cditf <- 0.5*ipca12.focus +  0.5*ipca12.DItf
+ipca12.cditp <- 0.5*ipca12.focus +  0.5*ipca12.DItp
 ipca12.cditfp <- 0.5*ipca12.focus +  0.5*ipca12.DItfp
 
 x <- cbind(ipca12, ipca12.focus, ipca12.comb,
@@ -149,13 +148,13 @@ tab <- tab.reqm(x, obs = "ipca12", ref = "ipca12.focus")
 knitr::kable(tab)
 ```
 
-                reqm   eqmr   dm test 
---------------  -----  -----  --------
-ipca12.focus    5,29   1,00           
-ipca12.comb     4,02   0,58   0       
-ipca12.comb2    2,68   0,26   0       
-ipca12.carima   2,82   0,28   0       
-ipca12.cvar     2,87   0,29   0       
-ipca12.cdi      2,65   0,25   0       
-ipca12.cditf    2,61   0,24   0       
-ipca12.cditfp   2,46   0,22   0       
+
+              |  reqm |  eqmr |  dm test 
+--------------|  -----|  -----|  --------
+ipca12.focus  |  5,29 |  1,00 |          
+ipca12.carima |  2,82 |  0,28 |  0       
+ipca12.cvar   |  2,87 |  0,29 |  0       
+ipca12.cdi    |  2,65 |  0,25 |  0       
+ipca12.cditf  |  2,61 |  0,24 |  0       
+ipca12.comb2  |  2,68 |  0,26 |  0       
+ipca12.cditfp |  2,46 |  0,22 |  0       
