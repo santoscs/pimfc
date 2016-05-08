@@ -4,3 +4,4 @@
 ^data-raw/importa_series\.R$
 ^data-raw/outsample\.R$
 ^prevendo\.inflacao\.fatores\.comuns\.Rproj$
+^\.Rproj\.user$
