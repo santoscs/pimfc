@@ -120,6 +120,11 @@ ipca12.DItfp  | 1,08  | 0,04  | 0
 
 ### Tabela 2 - Teste de previsão incorporada, 2008.5-2014.2
 
+```r
+tab <- tab.enctest(x, obs = "ipca12", ref = "ipca12.focus")
+knitr::kable(tab)
+```
+
 
 Modelo A      | Modelo B      | Lambda (valor p) 
 ------------- | ------------- | -----------------
