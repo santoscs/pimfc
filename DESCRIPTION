@@ -15,4 +15,6 @@ Imports: forecast,
     dyn,
     lmtest,
     sandwich,
-    zoo
+    zoo,
+    stats,
+    utils

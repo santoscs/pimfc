@@ -95,6 +95,7 @@ auto.var <-function(y, max.p=6, ic=c("SC", "HQ", "AIC", "FPE"), seasonal=TRUE){
 #'   as well as the confidence interval.}
 #'   \item{model}{The estimated VAR object for auto.var().}
 #' 
+#' @import stats
 #' 
 #' @export
 #' 
