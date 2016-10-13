@@ -17,4 +17,5 @@ Imports: forecast,
     sandwich,
     zoo,
     stats,
-    utils
+    utils,
+    fracdiff
