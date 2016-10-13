@@ -14,6 +14,10 @@
 #' @return lambda(matrix): loadings; factors(mts): fatores estimado;
 #' autovalor(vector): autovalores de x'x  
 #' 
+#' @import stats
+#' 
+#' @export
+#' 
 
 pc.stand <- function(x, norm=TRUE){
   
@@ -49,6 +53,10 @@ pc.stand <- function(x, norm=TRUE){
 #' 
 #' @return lambda(matrix) loadings;  factor(ts) fator sintetico 
 #' estimado; autovalor(vector) autovalores de (1/(N*(T-h)))x'x
+#' 
+#' @import stats
+#' 
+#' @export
 #' 
 
 pc.target <- function(x, y, h=12, norm=TRUE){
@@ -147,7 +155,7 @@ hard.threshold <- function(y, x, h=12, alpha=0.05){
 #' @return uma lista com: fit(dyn): o modelo estimado e 
 #' fcast(ts): valor previsto para \eqn{yh_{t+h}}
 #' 
-#' @import dyn zoo
+#' @import dyn zoo utils
 #' @export
 
 di <- function(yh, yt, f, h, m, p){
@@ -157,7 +165,7 @@ di <- function(yh, yt, f, h, m, p){
   if(!identical(round(tsp(yh),3), round(tsp(f), 3)))
     stop("series yh e f com inicio, fim ou frequencia diferente")
   # transforma para o formato zoo
-  if (require("zoo", quietly=TRUE)) {
+  if (requireNamespace("zoo", quietly=TRUE)) {
     dados <- zoo::as.zoo(ts.intersect(yh, yt, f))
   } else {
     stop("Please install package 'zoo'.")
@@ -188,6 +196,7 @@ di <- function(yh, yt, f, h, m, p){
 #' 
 #' @return best.fit o modelo selecionado dyn
 #' 
+#' @import stats
 #' @export
 
 di.selec <- function(yh, yt, f, h, k, m, p){
@@ -223,6 +232,8 @@ di.selec <- function(yh, yt, f, h, k, m, p){
 #'   
 #' @return lista contendo \code{fcast} (ts) valores previstos; \code{model} 
 #' (dyn) modelo estimado no fim da amostra
+#' 
+#' @import stats
 #' 
 #' @export
 
@@ -264,6 +275,8 @@ outsample.di <-function(yh, yt, x, k=1, m=3, p=3, n, h=12){
 #' @return lista contendo \code{fcast} (ts) valores previstos; \code{model} 
 #' (dyn) modelo estimado no fim da amostra; \code{sele} (charc) vetor com o
 #' nome do preditores selecionados 
+#' 
+#' @import stats
 #' 
 #' @export
 
@@ -312,6 +325,8 @@ outsample.ditp<-function(yh, yt, x, k=1, m=3, p=3, h=12, n){
 #' @return lista contendo \code{fcast} (ts) valores previstos; \code{model} 
 #' (dyn) modelo estimado no fim da amostra
 #' 
+#' @import stats
+#' 
 #' @export
 
 outsample.ditf<-function(yh, yt, x, m=3, p=3, n, h=12){
@@ -352,6 +367,7 @@ outsample.ditf<-function(yh, yt, x, m=3, p=3, n, h=12){
 #' 
 #' @return A time series univariate 
 #' 
+#' @import zoo stats
 #' @export
 
 acum<-function(x, m=12){
@@ -381,6 +397,8 @@ acum<-function(x, m=12){
 #'   
 #' @return lista contendo \code{fcast} (ts) valores previstos; \code{model} 
 #' (dyn) modelo estimado no fim da amostra
+#' 
+#' @import stats
 #' 
 #' @export
 

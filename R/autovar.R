@@ -20,7 +20,7 @@
 #'   \item{\code{x}}{series das variaveis diferenciadas \code{d} vezes.}
 #'   \item{\code{ic}}{criterios de informacao do modelo selecionado.}
 #' 
-#' @import vars forecast
+#' @import vars forecast stats
 #' @export
 #'  
 
@@ -41,7 +41,7 @@ auto.var <-function(y, max.p=6, ic=c("SC", "HQ", "AIC", "FPE"), seasonal=TRUE){
   for(i in 1:k){
     d[i] <- forecast::ndiffs(y[,i])
     if(d[i]>0)
-      x[,i] <- ts.union(y[,i]*NA, diff(y[,i], differences = d[i]))[,2]
+      x[,i] <- stats::ts.union(y[,i]*NA, diff(y[,i], differences = d[i]))[,2]
     else
       x[,i] <- y[,i]
   }
@@ -154,7 +154,7 @@ predict.autovar <- function(object, ..., n.ahead=12, ci=0.95){
 #' That is x minus fitted values.}
 #' \item{fitted}{Fitted values (one-step forecasts)} 
 #' 
-#' 
+#' @import stats
 #' @export
 #' 
 forecast.autovar <- function(object, h=10, level=c(80,95), fan=FALSE, ...)
@@ -231,6 +231,8 @@ f2list <- function(x){
 #' outdate(num): vetor contendo periodo fora da amostra 
 #' fit(Arima): ultimo modelo arima estimado
 #' 
+#' @import stats
+#' 
 #' @export
 #' 
 outsample.var <- function(y, max.p = 6, ic = c("SC", "HQ", "AIC", "FPE"), seasonal = TRUE, h, k){
@@ -290,11 +292,8 @@ outsample.var <- function(y, max.p = 6, ic = c("SC", "HQ", "AIC", "FPE"), season
 #' @export
 
 enc.test <- function(y, fA, fB){
-  if(require("zoo", quietly=TRUE)){
-    fit <- dyn::dyn$lm(y ~ offset(fA) + I(fB-fA)) 
-  }else{
-    stop("Please install package 'zoo'.")
-  }
+  requireNamespace("zoo")
+  fit <- dyn::dyn$lm(y ~ offset(fA) + I(fB-fA)) 
   return(lmtest::coeftest(fit, vcov. = sandwich::NeweyWest(fit)))
 }
 
