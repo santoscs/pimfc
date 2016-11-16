@@ -63,7 +63,7 @@ auto.var <-function(y, max.p=6, ic=c("SC", "HQ", "AIC", "FPE"), seasonal=TRUE){
       best.ic <- best2.ic
       p <- sele2$selection[ic]
       # estima o modelo
-      model <- vars::VAR(x, p=p, type="const", season = 12)
+      model <- vars::VAR(x, p=p, type="const", season = freq)
     }
   }else{
     best.ic <- best1.ic
