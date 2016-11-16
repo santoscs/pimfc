@@ -431,3 +431,52 @@ outsample.ditfp <-function(yh, yt, x, m=3, p=3, n, h=12){
   fcast <- ts(fcast, end=index(model$fcast), frequency = atr[3])
   return(list(fcast=fcast, model=model))
 }
+
+
+#' @title Previsao fora da amostra com modelo de defasagem distribuida
+#' 
+#' @description Realiza previsoes fora da amostra para yh com base no 
+#' modelo de defasagem distribuida selecionado por BIC 
+#' 
+#' @param yh serie a ser prevista \eqn{y_{t+h}^h} 
+#' @param yt (ts) preditor \eqn{y_{t-j+1}}
+#' @param x (ts) preditor
+#' @param m numero maximo de defasagens de x
+#' @param p numero maximo de defasagens de yt
+#' @param h horizonte de previsao
+#' @param n numero de previsoes fora da amostra
+#'   
+#' @return lista contendo \code{fcast} (ts) valores previstos; \code{model} 
+#' (dyn) modelo estimado no fim da amostra
+#' 
+#' @import stats
+#' 
+#' @export
+
+outsample.mdd <-function(yh, yt, x, m=3, p=3, n, h=12){
+  # verifica se as series temporais estao em concordancia
+  if(!identical(tsp(yh), tsp(yt)))
+    stop("series com inicio, fim ou frequencia diferente")
+  if(!identical(tsp(yh), tsp(x)))
+    stop("series com inicio, fim ou frequencia diferente")
+  
+  # tamanho, data e atributos das series
+  Tn <- dim(as.matrix(x))[1]
+  timeline <- time(x)
+  atr <- tsp(x)
+  fcast <- vector()
+  x <- y
+  outdate <- timeline[(Tn-n+1):Tn]
+  for(i in 1:n){
+    # restringe os dados
+    yh.ajuste <- window(yh, end=timeline[Tn-n-h+i])
+    yt.ajuste <- window(yt, end=timeline[Tn-n-h+i])
+    x.ajuste <- window(x, end=timeline[Tn-n-h+i])
+    # estima o modelo
+    model <- di.selec(yh=yh.ajuste, yt=yt.ajuste, f=f, h=h, k=1, m=m, p=p)
+    # get prediction for ith value
+    fcast[i] <- model$fcast
+  }
+  fcast <- ts(fcast, end=index(model$fcast), frequency = atr[3])
+  return(list(fcast=fcast, outdate=outdate, model=model))
+}
