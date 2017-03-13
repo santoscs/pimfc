@@ -74,8 +74,11 @@ outlier.adj <- function(x){
 
 # realiza o ajuste
 tsm <- apply(tsm, 2, outlier.adj)  
-tsm <- zoo(tsm, order.by = rownames(tsm))
+tsm <- ts(tsm, start = c(1996, 2), frequency = 12)
+
 
 # salva os dados tratados
-write.zoo(tsm, file = "data-raw/series_transformadas.csv")
+#write.zoo(tsm, file = "data-raw/series_transformadas.csv")
 
+macroseries <- tsm
+devtools::use_data(macroseries, overwrite = TRUE)

@@ -1,6 +1,6 @@
 #' Fit best VAR model to multivariate time series
 #'
-#'Returns best ARIMA model according to either SC, HQ, AIC or FPE value.
+#'Returns best VAR model according to either SC, HQ, AIC or FPE value.
 #'The function conducts a search over possible model within the order 
 #'constraints provided.
 #'
@@ -289,7 +289,7 @@ outsample.var <- function(y, max.p = 6, ic = c("SC", "HQ", "AIC", "FPE"), season
 #' errors, test statistics and p values.
 #' 
 #' 
-#' @import lmtest sandwich 
+#' @import lmtest sandwich zoo
 #' @export
 
 enc.test <- function(y, fA, fB){
@@ -298,3 +298,65 @@ enc.test <- function(y, fA, fB){
   return(lmtest::coeftest(fit, vcov. = sandwich::NeweyWest(fit)))
 }
 
+
+
+#' Test for Forecast Encompassing
+#'
+#' The Test for Forecast Encompassing compares the forecast of two forecast methods. 
+#' 
+#' The null hypothesis is that the method A forecast encompasses
+#' of method B, i.e., method B have the same information
+#' of method A. The alternative hypothesis is that method B 
+#' have additional information.
+#' 
+#' @param fA Forecast from method A.
+#' @param fB Forecast from method B.
+#' @param y The observed time series.
+#' @param h Length ahead of the forecast.
+#' 
+#' @return An object of class "coeftest" which is 
+#' essentially a coefficient matrix with columns 
+#' containing the estimates, associated standard 
+#' errors, test statistics and p values.
+#' 
+#' 
+#' @import lmtest sandwich stats
+#' @export
+
+comp.test <- function(y, fA, fB, h){
+  yh <- y - glag(y, -h)
+  fA <- fA - glag(y, -h)
+  fB <- fB - glag(y, -h)
+  fit <- stats::lm(yh ~ fA + fB) 
+  return(lmtest::coeftest(fit, vcov. = sandwich::NeweyWest(fit)))
+}
+
+#' Generalized Lag 
+#' 
+#' Compute a lagged version of a vector like time series
+#' 
+#' @param x A vector or univariate time series
+#' @param k	The number of lags
+#' 
+#' @return A vector object with the same length of x.
+#' 
+#' @import stats
+#' 
+#' @export
+#' 
+glag <- function(x, k = -1){
+  h <- abs(k)
+  if(k>0){
+    xh <- c(x, rep(NA, h))
+    ans <- embed(xh, h+1)[,1]
+  }
+    
+  if(k<0){
+    xh <- c(rep(NA, h), x) 
+    ans <- embed(xh, h+1)[,(h+1)]
+  }
+  if(k==0){
+    ans <- x
+  }
+  return(ans)
+}

@@ -27,7 +27,7 @@ A list with class attribute 'autovar' holding the following elements:
   \item{\code{ic}}{criterios de informacao do modelo selecionado.}
 }
 \description{
-Returns best ARIMA model according to either SC, HQ, AIC or FPE value.
+Returns best VAR model according to either SC, HQ, AIC or FPE value.
 The function conducts a search over possible model within the order 
 constraints provided.
 }

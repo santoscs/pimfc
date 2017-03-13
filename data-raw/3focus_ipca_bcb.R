@@ -68,7 +68,7 @@ ipca.focus <- zoo(ipca.focus, order.by = periodo)
 arquivos <- c("ipca12_mediana_02_03", "ipca12_mediana_04_05",
               "ipca12_mediana_06_07", "ipca12_mediana_08_09",
               "ipca12_mediana_10_11", "ipca12_mediana_12_13",
-              "ipca12_mediana_14_15")
+              "ipca12_mediana_14_15", "ipca12_mediana_16")
 
 ## Importa as series de expectativas
 i=arquivos[1]
@@ -85,5 +85,10 @@ for(i in arquivos){
 ipca12.focus <- aggregate(ipca12.focus, by= as.Date(as.yearmon(time(ipca12.focus))), mean, na.rm = TRUE)
 
 ## salva as series
-write.zoo(cbind(ipca.focus, ipca12.focus), file = "data-raw/focus_ipca_bcb.csv")
+#write.zoo(cbind(ipca.focus, ipca12.focus), file = "data-raw/focus_ipca_bcb.csv")
 
+## salva os dados
+#focus <- cbind(ipca.focus, ipca12.focus)
+focus <- ts(ipca12.focus, start = c(2002, 1), frequency = 12)
+
+devtools::use_data(focus, overwrite = TRUE)

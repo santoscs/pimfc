@@ -4,7 +4,8 @@
 \alias{outsample.arima}
 \title{Previsao fora da amostra com arima}
 \usage{
-outsample.arima(x, h, k)
+outsample.arima(x, h, k, max.p = 5, max.q = 5, max.P = 2, max.Q = 2,
+  max.order = 5, max.d = 2, max.D = 1)
 }
 \arguments{
 \item{x}{serie a ser prevista}
@@ -12,12 +13,27 @@ outsample.arima(x, h, k)
 \item{h}{horizonte de previsao}
 
 \item{k}{numero de previsoes fora da amostra}
+
+\item{max.p}{Maximum value of p}
+
+\item{max.q}{Maximum value of q}
+
+\item{max.P}{Maximum value of P}
+
+\item{max.Q}{Maximum value of Q}
+
+\item{max.order}{Maximum value of p+q+P+Q if model selection is not stepwise.}
+
+\item{max.d}{Maximum number of non-seasonal differences}
+
+\item{max.D}{Maximum number of seasonal differences}
 }
 \value{
 uma lista com
 fcast(ts): previsao pontual e intervalos de predicao usando arima 
 outdate(num): vetor contendo periodo fora da amostra 
 fit(Arima): ultimo modelo arima estimado
+order(num): ordem do arima no inicio e fim da amostra
 }
 \description{
 outsample.arima e usada para gerar previsoes fora da amostra

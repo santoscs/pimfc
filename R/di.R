@@ -455,28 +455,129 @@ outsample.ditfp <-function(yh, yt, x, m=3, p=3, n, h=12){
 
 outsample.mdd <-function(yh, yt, x, m=3, p=3, n, h=12){
   # verifica se as series temporais estao em concordancia
-  if(!identical(tsp(yh), tsp(yt)))
+  if(!identical(round(tsp(yh)), round(tsp(yt))))
     stop("series com inicio, fim ou frequencia diferente")
-  if(!identical(tsp(yh), tsp(x)))
-    stop("series com inicio, fim ou frequencia diferente")
+  if(!is.null(x))
+    if(!identical(round(tsp(yh)), round(tsp(x))))
+      stop("series com inicio, fim ou frequencia diferente")
   
   # tamanho, data e atributos das series
-  Tn <- dim(as.matrix(x))[1]
-  timeline <- time(x)
-  atr <- tsp(x)
+  Tn <- dim(as.matrix(yh))[1]
+  timeline <- time(yh)
+  atr <- tsp(yh)
   fcast <- vector()
-  x <- y
   outdate <- timeline[(Tn-n+1):Tn]
-  for(i in 1:n){
-    # restringe os dados
-    yh.ajuste <- window(yh, end=timeline[Tn-n-h+i])
-    yt.ajuste <- window(yt, end=timeline[Tn-n-h+i])
-    x.ajuste <- window(x, end=timeline[Tn-n-h+i])
-    # estima o modelo
-    model <- di.selec(yh=yh.ajuste, yt=yt.ajuste, f=f, h=h, k=1, m=m, p=p)
-    # get prediction for ith value
-    fcast[i] <- model$fcast
+  if(is.null(x)){
+    for(i in 1:n){
+      # restringe os dados
+      yh.ajuste <- window(yh, end=timeline[Tn-n-h+i])
+      yt.ajuste <- window(yt, end=timeline[Tn-n-h+i])
+      # estima o modelo
+      model <- mdd.selec(yh=yh.ajuste, yt=yt.ajuste, x=x, h=h, m=m, p=p)
+      # get prediction for ith value
+      fcast[i] <- model$fcast
+    } 
+  }else{
+    for(i in 1:n){
+      # restringe os dados
+      yh.ajuste <- window(yh, end=timeline[Tn-n-h+i])
+      yt.ajuste <- window(yt, end=timeline[Tn-n-h+i])
+      x.ajuste <- window(x, end=timeline[Tn-n-h+i])
+      # estima o modelo
+      model <- mdd.selec(yh=yh.ajuste, yt=yt.ajuste, x=x.ajuste, h=h, m=m, p=p)
+      # get prediction for ith value
+      fcast[i] <- model$fcast
+    }
   }
   fcast <- ts(fcast, end=index(model$fcast), frequency = atr[3])
   return(list(fcast=fcast, outdate=outdate, model=model))
 }
+
+
+
+#' @title Seleciona o modelo defasagem distribuida
+#'
+#' @description Seleciona o modelo defasagem distribuida com menor BIC
+#'
+#' @param yh serie a ser prevista \eqn{y_{t+h}^h} 
+#' @param yt preditor \eqn{y_{t-j+1}}
+#' @param x preditor
+#' @param m numero maximo de defasagens de x
+#' @param p numero maximo de defasagens de yt
+#' @param h horizonte de previsao
+#' 
+#' @return best.fit o modelo selecionado dyn
+#' 
+#' @import stats
+#' @export
+
+mdd.selec <- function(yh, yt, x, h, m, p){
+  bic.best <- Inf
+  for(i in 1:m){
+    for(j in 1:p){
+      model <- mdd(yh=yh, yt=yt, x=x, h=h,m=i,p=j)
+      bic <- BIC(model$fit)
+      if(bic<bic.best){
+        bic.best <- bic
+        model.best <-model
+      }
+    }
+  }
+  return(model.best)
+}
+
+#' @title Estima e Prever com modelo de defadsagem distribuida (mdd)
+#' 
+#' @description Estima uma regressao de yh sobre x e seus m lags e 
+#' sobre yt e seus p lags
+#' 
+#' @details yh igual a yt ou a alguma transformacao de yt, esse modelo
+#' de previsao se baseia em Stock e Watson 1998
+#'
+#' @param yh (ts) serie a ser prevista \eqn{y_{t+h}^h} 
+#' @param yt (ts) preditor \eqn{y_{t-j+1}}
+#' @param x (ts) preditor
+#' @param m numero de defasagens de x
+#' @param p numero de defasagens de yt
+#' @param h horizonte de previsao
+#' 
+#' @return uma lista com: fit(dyn): o modelo estimado e 
+#' fcast(ts): valor previsto para \eqn{yh_{t+h}}
+#' 
+#' @import dyn zoo utils
+#' @export
+
+mdd <- function(yh, yt, x, h, m, p){
+  requireNamespace("zoo")
+  requireNamespace("dyn")
+  
+  # verifica se as series temporais estao em concordancia
+  if(!identical(round(tsp(yh),3), round(tsp(yt), 3)))
+    stop("series yh e yt com inicio, fim ou frequencia diferente")
+  if (!is.null(x))
+    if(!identical(round(tsp(yh),3), round(tsp(x), 3)))
+      stop("series yh e x com inicio, fim ou frequencia diferente")
+  # transforma para o formato zoo
+  if (is.null(x)) {
+    dados <- zoo::as.zoo(ts.intersect(yh, yt))
+  } else {
+    dados <- zoo::as.zoo(ts.intersect(yh, yt, x))
+    # nomes dos xf
+    v <- colnames(dados)[-(1:2)]
+  } 
+  
+  # funcao lag
+  L <- function(x, k = 1) stats::lag(x, -k)
+  if(is.null(x)){
+    form <- as.formula("yh ~ L(yt, h:(h+p-1))")
+  }else{
+    form <- as.formula(paste("yh ~ L(yt, h:(h+p-1)) + ",
+                             paste("L(", v,", h:(h+m-1))",
+                                   collapse=" + ", sep="")))
+  }
+  fit <- dyn::dyn$lm(form, data=dados)
+  fcast <- tail(na.omit(predict(fit, dados)), 1)
+  return(list(fit=fit, fcast=fcast))
+}
+
+
